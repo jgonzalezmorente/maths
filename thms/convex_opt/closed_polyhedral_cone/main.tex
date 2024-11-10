@@ -1,0 +1,76 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{../../../config/config.tex}
+
+\title{Cono poliédrico}
+\author{José Antonio González Morente}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    En este artículo, demostramos que un cono poliédrico en $\mathbb{R}^n$ generado por un conjunto finito de vectores es un conjunto cerrado. La demostración se basa únicamente en propiedades de sucesiones y evita el uso de teoremas avanzados como el Teorema de Farkas o el Teorema de Separación de Hiperplanos. Al eliminar los vectores redundantes del conjunto generador, garantizamos que no existen combinaciones lineales no negativas no triviales que resulten en el vector cero. Esto nos permite analizar las sucesiones convergentes en el cono y demostrar que sus límites también pertenecen al cono, confirmando así su cerradura.
+    \end{abstract}
+
+\begin{df}[\textbf{Cono poliédrico}]
+    Sea $S=\set{\x_1, \x_2, \dots, \x_m}\subset\RR^n$ se define el cono poliédrico generado por $S$ como el conjunto
+    $$C=\set{\x\in\RR^n \mid  \x=\sum_{i=1}^m\lambda_i\x_i, \ \lambda_i\geq 0, \ i=1,2,\dots,m }$$
+\end{df}
+Observemos que, dado un elemento $\x \in C$, podemos expresarlo en la forma $\x=V\lambda$, donde $V$ es la matriz de dimensiones $n\times m$ cuyas columnas están formadas por las componentes de los vectores $\x_i$, para $i=1,\dots,m$ y $\lambda$ es un vector columna compuesto por los coeficientes $\lambda_i$.
+
+\begin{thm}
+    Sea $S=\set{\x_1, \x_2, \dots, \x_m}\subset\RR^n$, entonces el cono poliédrico
+    $$C=\set{\x\in\RR^n \mid  \x=V\lambda, \ \lambda \in \RR^m, \ \lambda_i\geq 0, \ i=1,2,\dots,m }$$
+    es cerrado.
+\end{thm}
+
+\begin{proof}
+    Sea $V$ la matriz $n\times m$ cuyas columnas son los vectores $\x_1, \x_2, \dots, \x_m$ de $S$.
+    En primer lugar, observemos que podemos suponer sin pérdida de generalidad que en $S$ no existen combinaciones lineales no negativas no triviales que resulten en el vector cero. Es decir, no existen coeficientes $\mu_i\geq 0$, no todos nulos, tales que
+
+    $$V\mu=\sum_{i=1}^m\mu_i\x_i=\0$$
+
+    Si tal combinación existiera, significaría que algunos vectores de $S$ son redundantes y pueden ser expresados como combinaciones lineales no negativas de los demás. En tal caso, podríamos eliminar los vectores redundantes sin alterar el cono $C$.
+
+    Ahora, para demostrar que $C$ es cerrado, consideremos una sucesión $\set{\x_k}\subset C$ que converge a un punto $\x \in\RR^n$. Queremos probar que $\x\in C$.
+
+    Dado que $\x_k\in C$, existe $\lambda_k\in \RR^m$ con componentes no negativas (es decir, $\lambda_{k,i}\geq 0$ para todo $i$), tal que
+
+    $$\x_k=V\lambda_k$$
+
+    Analizaremos dos casos según el comportamiento de la sucesión $\set{\lambda_k}$
+
+    \vspace{2mm} \textbf{Caso 1: La sucesión $\set{\lambda_k}$ está acotada en $\RR^m$.}
+    \vspace{2mm}
+
+    Como $\set{\lambda_k}$ está acotada y $\lambda_k\geq \0$, por el teorema de Bolzano-Weierstrass, existe una subsucesión $\set{\lambda_{k_j}}$ que converge a algún $\lambda\in \RR^m$ con $\lambda_i\geq 0$ para todo $i$.
+
+    Debido a que la función $V\lambda$ es continua respecto a $\lambda$, tenemos
+
+    $$\x_{j_k}=V\lambda_{k_j} \longrightarrow V\lambda=\x$$
+    Por lo tanto, $\x=V\lambda \in C$.
+
+    \vspace{2mm} \textbf{Caso 2: La sucesión $\set{\lambda_k}$ no está acotada en $\RR^m$.}
+    \vspace{2mm}
+
+    En este caso, consideremos la sucesión normalizada $\set{\mu_k}_{k=1}^\infty$,
+    $$\mu_k=\frac{\lambda_k}{\|\lambda_k\|}\quad\text{donde }\|\cdot\|\text{ es la norma euclídea }$$
+
+    Los vectores $\mu_k$ pertenecen a la esfera unidad $S^{m-1}$ en $\RR^m$ y satisfacen $\mu_k\geq 0$ componente a componente.
+
+    Como $S^{m-1}$ es compacto en espacios de dimensión finita y el conjunto $[0,\infty)^m\cap S^{m-1}$ es cerrado y acotado, podemos aplicar el teorema de Bolzano-Weierstrass para obtener subsucesión $\set{\mu_{k_j}}$ tal que
+    $$\mu_{k_j}\longrightarrow \mu\in \RR^m $$
+    donde $\mu\geq\0$ y $\|\mu\|=1$.
+
+    Observemos que
+    $$\frac{\x_{k_j}}{\|\lambda_{k_j}\|}=V\mu_{k_j}$$
+    Tomando límite cuando $j\to\infty$ obtenemos
+    $$\lim_{j\to\infty}\frac{\x_{k_j}}{\|\lambda_{k_j}\|}=V\mu$$
+    pero como $\x_{k_j}\to\x$ y $\|\lambda_{k_j}\|\to\infty$ tenemos que
+    $$V\mu=\0$$
+    Sin embargo, $\mu\neq\0$ porque $\|\mu\|=1$ y $\mu\geq\0$ con al menos una componente positiva.
+
+    Por lo tanto, existe una combinación lineal no negativa no trivial de los vectores de $S$ que resulta en el vector cero. Esto contradice nuestra suposición inicial de que no existen tales combinaciones en $S$. Por lo que este caso no se puede dar.
+\end{proof}
+
+\end{document}
