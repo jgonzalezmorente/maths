@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.10)  10 NOV 2024 22:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.10)  15 NOV 2024 18:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/devmaster/src/maths/thms/convex_opt/closed_polyhedral_cone/main.tex
-(/Users/devmaster/src/maths/thms/convex_opt/closed_polyhedral_cone/main.tex
+**/Users/devmaster/src/maths/thms/convex_opt/closed_polyhedral_cone/closed_polyhedral_cone.tex
+(/Users/devmaster/src/maths/thms/convex_opt/closed_polyhedral_cone/closed_polyhedral_cone.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024basic/texmf-dist/tex/latex/base/article.cls
@@ -310,11 +310,11 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count299
 \l__pdf_internal_box=\box53
-) (./main.aux
+) (./closed_polyhedral_cone.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
-\openout1 = `main.aux'.
+\openout1 = `closed_polyhedral_cone.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -337,9 +337,9 @@ LaTeX Font Info:    ... okay on input line 8.
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 Package hyperref Info: Link coloring OFF on input line 8.
- (./main.out) (./main.out)
+ (./closed_polyhedral_cone.out) (./closed_polyhedral_cone.out)
 \@outlinefile=\write3
-\openout3 = `main.out'.
+\openout3 = `closed_polyhedral_cone.out'.
 
 
 *geometry* driver: auto-detecting
@@ -416,7 +416,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <12> on input line 16.
  [1
 
-{/usr/local/texlive/2024basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}] [2] (./main.aux
+{/usr/local/texlive/2024basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}] [2] (./closed_polyhedral_cone.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -424,19 +424,19 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `main.out' has not changed.
+Package rerunfilecheck Info: File `closed_polyhedral_cone.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  11182 strings out of 475567
- 172821 string characters out of 5777888
+ 173163 string characters out of 5777888
  1941187 words of memory out of 5000000
  33179 multiletter control sequences out of 15000+600000
  624519 words of font info for 86 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 80i,6n,82p,737b,513s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,6n,82p,755b,513s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2024basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (2 pages, 208514 bytes).
+Output written on closed_polyhedral_cone.pdf (2 pages, 208759 bytes).
 PDF statistics:
  100 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream

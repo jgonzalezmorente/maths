@@ -1,0 +1,83 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{../../../config/config.tex}
+
+\title{Teorema de Bolzano-Weierstrass}
+\author{José Antonio González Morente}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    En este documento se presenta el \textbf{Teorema de Bolzano-Weierstrass} en $\RR^n$, el cual afirma que todo subconjunto infinito y acotado de $\RR^n$ tiene al menos un punto de acumulación. Se ofrece una demostración detallada y mejorada, enfatizando la claridad en la notación y la rigurosidad en los argumentos. La demostración utiliza una construcción de intervalos $n$-dimensionales anidados cuya longitud disminuye exponencialmente, asegurando la convergencia hacia un punto límite que es un punto de acumulación del conjunto dado.
+\end{abstract}
+
+\begin{thm}[\textbf{Bolzano-Weierstrass}]
+Si un conjunto acotado $S$ de $\RR^n$ contiene una infinidad de puntos, entonces existe al menos un punto $\t \in \RR^n$ que es punto de acumulación de $S$.
+\end{thm}
+
+\begin{proof}
+Como $S$ es acotado, existe un número real positivo $a > 0$ tal que $S \subset B(\0, a)$, donde $B(\0, a)$ es la bola $n$-dimensional centrada en el origen con radio $a$. Por lo tanto, $S$ está contenido en el intervalo $n$-dimensional:
+$$J_1 = I_1^{(1)} \times I_2^{(1)} \times \dots \times I_n^{(1)},$$
+donde cada $I_k^{(1)} = [-a, a]$ para $k = 1, 2, \dots, n$.
+
+\begin{itemize}
+    \item \textbf{Paso 1: Subdivisión inicial}.
+
+    Dividimos cada intervalo $I_k^{(1)}$ en dos subintervalos iguales:
+    $$I_{k,1}^{(1)} = \left[-a, 0\right], \quad I_{k,2}^{(1)} = \left[0, a\right]$$
+    Consideramos todos los productos cartesianos de la forma:
+    $$J = I_{1, k_1}^{(1)} \times I_{2, k_2}^{(1)} \times \dots \times I_{n, k_n}^{(1)}$$
+    donde cada $k_i \in \{1, 2\}$. Hay exactamente $2^n$ intervalos $n$-dimensionales de este tipo, y su unión es $J_1$. Dado que $S$ es infinito y está contenido en $J_1$, al menos uno de estos intervalos, denotado por $J_2$, contiene infinitos puntos de $S$.
+
+    \item \textbf{Paso 2: Proceso iterativo}.
+
+    Repetimos el proceso con $J_2$:
+    \begin{enumerate}
+        \item Dividimos cada intervalo $I_k^{(2)}$ en dos subintervalos iguales:
+        $$I_{k,1}^{(2)} \text{ y } I_{k,2}^{(2)}$$
+        donde $I_k^{(2)}$ es el intervalo correspondiente en $J_2$.
+        \item Obtenemos $2^n$ nuevos intervalos $n$-dimensionales cuya unión es $J_2$.
+        \item Al menos uno de estos intervalos, denotado por $J_3$, contiene infinitos puntos de $S$.
+    \end{enumerate}
+
+    \item \textbf{Paso 3: Construcción de la sucesión de intervalos anidados}.
+
+    Continuamos este procedimiento inductivamente, obteniendo una sucesión de intervalos $n$-dimensionales anidados:
+    $$J_1 \supset J_2 \supset J_3 \supset \dots$$
+    donde cada $J_m$ se puede expresar como:
+    $$J_m = I_1^{(m)} \times I_2^{(m)} \times \dots \times I_n^{(m)}$$
+    con $I_k^{(m)} \subset I_k^{(m-1)}$ y longitud:
+    $$\ell_k^{(m)} = b_k^{(m)} - a_k^{(m)} = \frac{a}{2^{m-2}}$$
+    para $k = 1, 2, \dots, n$ y $m \geq 1$.
+
+    \item \textbf{Paso 4: Determinación del punto límite}.
+
+    Para cada $k$, las sucesiones $\{a_k^{(m)}\}_{m=1}^\infty$ y $\{b_k^{(m)}\}_{m=1}^\infty$ cumplen:
+    \begin{enumerate}
+        \item $\{a_k^{(m)}\}$ es creciente y acotada superiormente, por lo que converge al supremo $t_k = \lim_{m \to \infty} a_k^{(m)}$.
+        \item $\{b_k^{(m)}\}$ es decreciente y acotada inferiormente, por lo que converge al ínfimo $t_k' = \lim_{m \to \infty} b_k^{(m)}$.
+        \item Como $b_k^{(m)} - a_k^{(m)} = \frac{a}{2^{m-2}} \to 0$ cuando $m \to \infty$, se sigue que $t_k = t_k'$.
+    \end{enumerate}
+    Por lo tanto, ambas sucesiones convergen al mismo límite $t_k$, y podemos afirmar que:
+    $$\lim_{m \to \infty} a_k^{(m)} = \lim_{m \to \infty} b_k^{(m)} = t_k$$
+
+    Definimos el punto $\t = (t_1, t_2, \dots, t_n) \in \RR^n$. Este punto pertenece a todos los intervalos $J_m$:
+    $$\t \in \bigcap_{m=1}^\infty J_m$$
+
+    \item \textbf{Paso 5: Demostración de que $\t$ es punto de acumulación de $S$}.
+
+    Sea $\varepsilon > 0$ arbitrario. Elegimos $m$ suficientemente grande tal que:
+    $$\frac{a}{2^{m-2}} < \frac{\varepsilon}{\sqrt{n}}$$
+    Entonces, el diámetro de $J_m$ satisface:
+    $$\text{diam}(J_m) = \sqrt{\sum_{k=1}^n \left(\ell_k^{(m)}\right)^2} \leq \sqrt{n \left(\frac{a}{2^{m-2}}\right)^2} < \varepsilon$$
+    Por lo tanto,
+    $$J_m \subset B(\t, \varepsilon)$$
+    Como $J_m$ contiene infinitos puntos de $S$, se deduce que $B(\t, \varepsilon)$ también contiene infinitos puntos de $S$. Dado que $\varepsilon > 0$ es arbitrario, concluimos que $\t$ es un punto de acumulación de $S$.
+\end{itemize}
+\end{proof}
+\begin{thebibliography}{9}
+    \bibitem{apostol}
+    Tom M. Apostol, \textit{Análisis Matemático}, Reverté, 2da Edición, 1976.
+\end{thebibliography}
+\end{document}

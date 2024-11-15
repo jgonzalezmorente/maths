@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1731275362.08151 "/Users/devmaster/src/maths/thms/convex_opt/closed_polyhedral_cone/main.tex" "main.pdf" "main" 1731275362.39785 0
+["pdflatex"] 1731692577.01518 "/Users/devmaster/src/maths/thms/convex_opt/closed_polyhedral_cone/closed_polyhedral_cone.tex" "closed_polyhedral_cone.pdf" "closed_polyhedral_cone" 1731692577.32957 0
   "../../../config/config.tex" 1731270248.62672 1793 53309309b22a55e08d8e43f7f5d3ca2d ""
-  "/Users/devmaster/src/maths/thms/convex_opt/closed_polyhedral_cone/main.tex" 1731275361.97613 4663 1d4ce8a246e33f8920dda1cf29e526f0 ""
+  "/Users/devmaster/src/maths/thms/convex_opt/closed_polyhedral_cone/closed_polyhedral_cone.tex" 1731692576.91244 4659 f7dd74a5b57209ffb457f22df5e410ac ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -111,15 +111,15 @@
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657483315 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/local/texlive/2024basic/texmf-dist/web2c/texmf.cnf" 1708706663 41649 5d6ae549fbbcb850a863f69aa41f3d10 ""
-  "/usr/local/texlive/2024basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1731263158.87452 79187 3707ba1a1c2304ab6bb6cb291e5e6f79 ""
+  "/usr/local/texlive/2024basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1731400818.88052 92866 bb46d7904e5e8f86b8b2821e73817e45 ""
   "/usr/local/texlive/2024basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1731263154 7536457 6c81d9096e8ad86dc168daa14fce4249 ""
   "/usr/local/texlive/2024basic/texmf.cnf" 1710011638 628 8b896f7d9d41b43f4346b9091e52171f ""
-  "main.aux" 1731275362.33091 324 60b176423d84ba918ebf06eb83270543 "pdflatex"
-  "main.out" 1731275362.30755 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1731275361.97613 4663 1d4ce8a246e33f8920dda1cf29e526f0 ""
+  "closed_polyhedral_cone.aux" 1731692577.26422 324 60b176423d84ba918ebf06eb83270543 "pdflatex"
+  "closed_polyhedral_cone.out" 1731692577.24111 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "closed_polyhedral_cone.tex" 1731692576.91244 4659 f7dd74a5b57209ffb457f22df5e410ac ""
   (generated)
-  "main.aux"
-  "main.log"
-  "main.out"
-  "main.pdf"
+  "closed_polyhedral_cone.aux"
+  "closed_polyhedral_cone.log"
+  "closed_polyhedral_cone.out"
+  "closed_polyhedral_cone.pdf"
   (rewritten before read)
