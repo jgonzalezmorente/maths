@@ -1,0 +1,109 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{../../../config/config.tex}
+
+\title{\bfseries Producto Interior e Interpretación en Análisis de Datos}
+\author{José Antonio González Morente}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\tableofcontents
+
+\section{Productos interiores, espacios euclídeos. Normas}
+
+En la geometría euclidiana, las propiedades que permiten medir longitudes de segmentos rectilíneos y los ángulos formados por rectas se denominan \textbf{propiedades métricas}. En nuestro estudio de $V_n$, definimos las longitudes y los ángulos utilizando el producto escalar. Ahora buscamos extender estas ideas a espacios vectoriales más generales. Para ello, primero introduciremos una generalización del producto escalar, que llamaremos \textbf{producto interior}, y luego definiremos la longitud y el ángulo en función de este nuevo concepto.
+
+El \textbf{producto escalar} de dos vectores $\x=(x_1, \dots, x_n)$ y $\y=(y_1, \dots, y_n)$ en $V_n$ se define como:
+\begin{equation}\label{eq:1}
+    \x \cdot \y = \sum_{i=1}^n x_i y_i
+\end{equation}
+
+En un espacio vectorial más general, utilizamos la notación $\ip{x}{y}$ en lugar de $x\cdot y$ para referirnos al producto interior. Este se define de manera axiomática, en lugar de mediante una fórmula explícita. Es decir, establecemos ciertas propiedades fundamentales que los productos interiores deben cumplir, y estas se consideran como \textbf{axiomas}.
+
+\begin{df}
+    Un espacio vectorial real $V$ tiene un producto interior si, a cada par de elementos $x$ e $y$ de $V$ le corresponde un número real único $\ip{x}{y}$ que satisface los siguientes axiomas para todos $x,y,z \in V$ y para todo escalar real $c$.
+    \begin{enumerate}
+        \item Conmutatividad o simetría: $\ip{x}{y}=\ip{y}{x}$
+        \item Distributividad o linealidad: $\ip{x}{y+z}=\ip{y}{x}+\ip{x}{z}$
+        \item Homogeneidad en el primer argumento: $c\ip{x}{y}=\ip{cx}{y}$
+        \item Positividad: $\ip{x}{x}>0$ si $x\neq 0$
+    \end{enumerate}
+    Un espacio vectorial con un producto interior se denomina {\it espacio real euclídeo}.
+\end{df}
+
+En un espacio vectorial complejo, un producto interior $\ip{x}{y}$ es un número complejo que satisface los mismos axiomas que el producto interior real, con una excepción: el axioma de simetría se reemplaza por la \textbf{simetría hermitiana}:
+\begin{equation}\label{eq:2}
+    \ip{x}{y} = \conj{\ip{y}{x}},
+\end{equation}
+donde $\conj{\ip{y}{x}}$ denota el conjugado complejo de $\ip{y}{x}$. Además, en el axioma de homogeneidad, el escalar $c$ puede ser cualquier número complejo. A partir del axioma de homogeneidad y de \eqref{eq:2}, se deduce la siguiente relación:
+$$\ip{x}{cy} = \conj{\ip{cy}{x}} = \conj{c} \cdot \conj{\ip{y}{x}} = \conj{c} \ip{x}{y}$$
+
+Un espacio vectorial complejo dotado de un producto interior se denomina \textbf{espacio euclídeo complejo}. También se utiliza el término \textbf{espacio unitario} como sinónimo. Un ejemplo clásico es el espacio vectorial complejo $V_n(\CC)$. Cuando nos referimos a un espacio euclídeo sin especificar, entenderemos que puede ser tanto real como complejo.
+
+\subsubsection*{Ejemplos de producto interior}
+El lector debería comprobar que cada ejemplo que sigue satisface todos los axiomas de producto interior.
+
+\begin{example}
+    En $V_n$, sea $\ip{\x}{\y} = \x \cdot \y$ el producto escalar ordinario de $\x$ e $\y$.
+\end{example}
+
+\begin{example}
+    Si $\x = (x_1, x_2)$ e $\y = (y_1, y_2)$ son dos vectores de $V_2$, definimos $\ip{\x}{\y}$ mediante la fórmula
+    $$\ip{\x}{\y} = 2x_1y_1 + x_1y_2 + x_2y_1 + x_2y_2$$
+
+    Este ejemplo pone de manifiesto que pueden existir más de un producto interior en un espacio vectorial dado.
+\end{example}
+
+\begin{example}
+    Sea $C(a, b)$ el espacio vectorial de todas las funciones reales continuas en el intervalo $[a, b]$. Definamos un producto interior de dos funciones $f$ y $g$ mediante la fórmula
+    $$\ip{f}{g} = \int_a^b f(t) g(t) \, dt$$
+
+    Esta fórmula es análoga a la ecuación \eqref{eq:1}, que define el producto escalar de dos vectores en $V_n$. Los valores de las funciones $f(t)$ y $g(t)$ desempeñan el papel de los componentes $x_i$ e $y_i$, y la integración desempeña el papel de la suma.
+\end{example}
+
+\begin{example}
+    En el espacio $C(a, b)$, definimos
+    $$\ip{f}{g} = \int_a^b w(t) f(t) g(t) \, dt$$
+    donde $w$ es una función positiva fija de $C(a, b)$. Tal función se llama {\it función peso}. En el ejemplo anterior, $w(t) = 1$ para todo $t \in [a, b]$.
+\end{example}
+
+\begin{example}
+    En el espacio vectorial de todos los polinomios reales, definimos
+    $$\ip{f}{g} = \int_0^\infty e^{-t} f(t) g(t) \, dt$$
+
+    Debido al factor exponencial, esta integral impropia converge para todo par de polinomios $f$ y $g$.
+\end{example}
+
+\begin{theorem}
+    En un espacio euclídeo $V$, todo producto interior satisface la desigualdad de Cauchy-Schwarz:
+    $$\abs{\ip{x}{y}}^2 \leq \ip{x}{x}\ip{y}{y},$$
+    para todo $x$ e $y$ en $V$. Además, el signo de igualdad se cumple si y sólo si $x$ e $y$ son linealmente dependientes.
+\end{theorem}
+
+\begin{proof}
+    Si $x = 0$ o $y = 0$, la demostración es trivial. Supongamos, entonces, que $x \neq 0$ e $y \neq 0$. Consideremos el vector $z = a x + b y$, donde $a$ y $b$ son escalares que especificaremos más adelante. La propiedad de no negatividad del producto interior nos da:
+    $$\ip{z}{z} \geq 0$$
+    para todo $a$ y $b$. Usaremos esta desigualdad, junto con una elección apropiada de $a$ y $b$, para obtener la desigualdad de Cauchy-Schwarz.
+
+    Expresamos $\ip{z}{z}$ en términos de $x$ e $y$ usando las propiedades del producto interior:
+    \begin{align*}
+        \ip{z}{z} & = \ip{a x + b y}{a x + b y} \\
+                  & = \ip{a x}{a x} + \ip{a x}{b y} + \ip{b y}{a x} + \ip{b y}{b y} \\
+                  & = a \conj{a} \ip{x}{x} + a \conj{b} \ip{x}{y} + b \conj{a} \ip{y}{x} + b \conj{b} \ip{y}{y}
+    \end{align*}
+
+    Tomando $a=\ip{y}{y}$ y suprimiendo en la desigualdad el factor positivo $\ip{y}{y}$, resulta
+    $$\ip{y}{y}\ip{x}{x} + \conj{b}\ip{x}{y} + b\ip{y}{x} + b\conj{b} \geq 0$$
+
+    Ahora, hagamos $b=-\ip{x}{y}$. Entonces $\conj{b}=-\ip{y}{x}$ y la última desigualdad, una vez simplificada, toma la forma
+    $$\ip{y}{y}\ip{x}{x}\geq\ip{x}{y}\ip{y}{x}=\abs{\ip{x}{y}}^2$$
+
+    Esto demuestra la desigualdad de Cauchy-Schwarz. El signo de igualdad es válido si y solo si $z=0$. Esto ocurre si y sólo si $x$ e $y$ son linealmente dependientes.
+\end{proof}
+
+
+\end{document}

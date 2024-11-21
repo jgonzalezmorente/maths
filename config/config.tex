@@ -14,14 +14,14 @@
 \usepackage[a4paper, margin=2.5cm]{geometry}
 
 % Configuraciones de teoremas y entornos personalizados
-\newtheorem{thm}{Teorema}
-\newtheorem{prop}{Proposición}
-\newtheorem{lem}{Lema}
-\newtheorem{cor}{Corolario}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{prop}{Proposición}[section]
+\newtheorem{lem}{Lema}[section]
+\newtheorem{cor}{Corolario}[section]
 \theoremstyle{definition}
-\newtheorem{df}{Definición}
-\newtheorem{ej}{Ejemplo}
-\newtheorem{obs}{Observación}
+\newtheorem{df}{Definición}[section]
+\newtheorem{example}{Ejemplo}[section]
+\newtheorem{obs}{Observación}[section]
 
 % Comandos personalizados
 \renewcommand*{\deg}{\normalfont\text{gr}\hspace*{1mm}}
@@ -30,13 +30,14 @@
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand{\Log}{\operatorname{\rm Log}}
 \newcommand{\inter}{\operatorname{\rm int}}
-\newcommand{\adh}[1]{\overline{#1}}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\conj}[1]{\overline{#1}}
 \newcommand{\fr}[1]{\partial{#1}}
-\newcommand{\prodesc}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
 \newcommand{\norm}[1]{\left\| #1\right\|}
 \newcommand{\mcm}[1]{\operatorname{\rm mcm}\left(#1\right)}
 \newcommand{\mcd}[1]{\operatorname{\rm mcd}\left(#1\right)}
-\newcommand{\cl}[1]{\left[#1\right]}
+\newcommand{\ec}[1]{\left[#1\right]}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\suc}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\abs}[1]{\left| #1\right|}

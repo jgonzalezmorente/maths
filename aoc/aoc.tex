@@ -1,0 +1,112 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{../config/config.tex}
+
+\title{\bfseries Algoritmos y Teoremas para Advent of Code}
+\author{José Antonio González Morente}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    Este documento es una recopilación de teoremas y algoritmos que he necesitado aplicar durante la resolución de los retos del \textbf{Advent of Code}.
+\end{abstract}
+
+\tableofcontents
+
+\section{Geometría computacional}
+\begin{df}
+    Se llama \textbf{polígono simple} a un polígono cuyos lados no contiguos no se intersecan; es decir, es una figura plana cerrada que forma la frontera de una región poligonal.
+\end{df}
+
+Un polígono simple divide al plano en dos conjuntos de puntos: el \textbf{interior} y el \textbf{exterior} de la región poligonal. El interior se caracteriza por no contener rectas completas, mientras que el exterior sí puede contenerlas. Un polígono que no es simple se denomina \textbf{polígono complejo}.
+
+\begin{df}
+    Una \textbf{triangulación} de un polígono simple es una división de su área en un conjunto de triángulos que cumplen las siguientes condiciones:
+    \begin{itemize}
+        \item La unión de todos los triángulos es igual al polígono original.
+        \item Los vértices de los triángulos son vértices del polígono original.
+        \item Cualquier pareja de triángulos es disjunta o comparte únicamente un vértice o un lado.
+    \end{itemize}
+\end{df}
+
+\begin{lem}
+    Todo polígono simple de $n$ vértices es triangulable.
+\end{lem}
+
+\begin{proof}
+    La demostración es por inducción fuerte sobre el número de vértices $n$ del polígono.
+
+    \textbf{Caso base:} Para $n=3$, el polígono es un triángulo, el cual es trivialmente triangulable.
+
+    \textbf{Paso inductivo:} Supongamos que todo polígono simple con menos de $n$ vértices es triangulable, y consideremos un polígono simple $P$ con $n > 3$ vértices.
+
+    Primero, demostraremos que $P$ tiene al menos una diagonal que no cruza al polígono. Una diagonal es un segmento que une dos vértices no consecutivos y que está completamente contenido en el interior del polígono.
+
+    Consideremos el conjunto de vértices de $P$. Sea $v$ un vértice de $P$ con coordenada $x$ mínima (es decir, el vértice más a la izquierda). Sean $u$ y $w$ los vértices adyacentes a $v$ en el polígono. Existen dos casos:
+
+    \begin{itemize}
+        \item \textbf{Caso 1:} El segmento $\overline{uw}$ está completamente dentro de $P$. En este caso, $\overline{uw}$ es una diagonal válida, y podemos dividir $P$ en dos polígonos más pequeños al trazar esta diagonal.
+        \item \textbf{Caso 2:} El segmento $\overline{uw}$ no está completamente dentro de $P$. Esto significa que existen vértices de $P$ en el interior del triángulo $\triangle uvw$. Entre estos vértices, seleccionemos aquel, llamémosle $v'$, que está más alejado de la base $\overline{uw}$. El segmento $\overline{vv'}$ no puede cruzar ningún lado del polígono $P$, ya que si lo hiciera, implicaría la existencia de otro vértice más alejado de $\overline{uw}$ dentro de $\triangle uvw$, contradiciendo la elección de $v'$. Por lo tanto, $\overline{vv'}$ es una diagonal válida.
+    \end{itemize}
+
+    En ambos casos, hemos encontrado una diagonal que divide $P$ en dos polígonos simples con menos de $n$ vértices. Por hipótesis inductiva, ambos polígonos son triangulables. Al combinar las triangulaciones de los subpolígonos y la diagonal encontrada, obtenemos una triangulación de $P$.
+\end{proof}
+
+\begin{thm}[Teorema de Pick]
+    Supongamos que tenemos una cuadrícula en el plano, donde cada punto tiene coordenadas enteras. Sea $P$ un polígono simple cuyos vértices están todos en puntos de la cuadrícula. Sea $i$ el número de puntos de la cuadrícula en el interior de $P$, y $f$ el número de puntos de la cuadrícula en la frontera de $P$. Entonces, el área del polígono $P$ se calcula mediante:
+    $$A_P = i + \frac{f}{2} - 1$$
+\end{thm}
+
+\begin{proof}
+    Vamos a demostrar el resultado por inducción. Sea $P$ un polígono simple y $T$ un triángulo con un lado común con $P$. Asumimos que el teorema es cierto para $P$ y para $T$ de forma separada y demostraremos que también es cierto para el polígono $PT$ formado a partir de $P$ añadiendo $T$. Como $P$ y $T$ comparten un lado, todos los puntos frontera a lo largo del lado común, excepto los puntos extremos del lado, se convierten en puntos interiores de $PT$. Por tanto, llamando $c$ al número de puntos frontera en común, tenemos que
+    $$i_{PT}=(i_P + i_T) + ( c - 2 ), \quad f_{PT}=(f_P+f_T) - 2(c-2)-2$$
+    Por tanto,
+    $$i_P+i_T = i_{PT}-(c-2), \quad f_P+f_T=f_{PT}+2(c-2)+2$$
+    Como asumimos que el teorema es cierto para $P$ y $T$ de forma separada:
+    \begin{equation*}
+        \begin{split}
+            A_{PT} & = A_P + A_T = \left(i_P+\frac{f_P}{2}-1\right) + \left(i_T+\frac{f_T}{2}-1\right) = \\
+                    & = i_{PT} - (c - 2) + \frac{f_{PT}+2(c-2)+2}{2}-2 = i_{PT}+\frac{f_{PT}}{2} - 1
+        \end{split}
+    \end{equation*}
+    Por lo tanto, el polígono $A_{PT}$ cumple el  teorema.
+
+    Por el lema anterior cualquier polígono simple puede ser triangulado. Por tanto, lo que hemos obtenido es que si el teorema es cierto para un triángulo $T$ y para un polígono formado por $n$ triángulos también lo es para un polígono formado por $n+1$ triángulos.
+
+    El último paso de la demostración es comprobar el resultado para cualquier triángulo. Es fácil ver que el teorema es cierto para cualquier rectángulo con sus lados paralelos a los ejes. A partir de esto deducimos que la fórmula es cierta para triángulos rectángulos obtenidos a partir de un rectángulo mediante un corte por una de sus diagonales. En efecto, sea $Q$ un triángulo rectángulo obtenido a partir de un rectángulo $R$ mediante un corte por una de sus diagonales. Sea $d$ el número de puntos de la cuadrícula pertenecientes a la diagonal. Entonces
+    $$i_R=2i_T+(d-2), \quad f_R=2f_T - 2(d-2) -2$$
+    luego
+    \begin{equation*}
+        \begin{split}
+            2A_T & = A_R = i_R+\frac{f_R}{2}-1 = \\
+                 & = 2i_T+(d-2)+\frac{2f_T - 2(d-2) -2}{2}-1 = \\
+                 & = 2i_T+(d-2)+f_T-(d-2)-2 = \\
+                 & = 2i_T+f_T-2
+        \end{split}
+    \end{equation*}
+    luego
+    $$A_T=i_T+\frac{f_T}{2}-1$$
+    y la fórmula es cierta para triángulos rectángulos.
+
+    Finalmente cualquier triángulo puede particionarse en triángulos rectángulos.
+\end{proof}
+
+\begin{thm}[Fórmula de Gauss para el área de polígonos simples]
+    Sea $P$ un polígono simple con vértices dados en orden cíclico $p_0, p_1, \dots, p_{n-1}$, donde $p_i = (x_i, y_i)$ para $i = 0, 1, \dots, n-1$. Entonces, el área $A$ de $P$ se puede calcular mediante:
+    $$A=\frac{1}{2}\abs{\sum_{k=0}^nx_ky_{k+1} - x_{k+1}y_k}=\frac{1}{2}\sum_{k=0}^n\det\begin{pmatrix}
+        x_k & x_{k+1} \\
+        y_k & y_{k+1}
+    \end{pmatrix}$$
+    donde se considera que $p_n = p_0$.
+\end{thm}
+
+\begin{proof}
+    El área del polígono es la suma de todas las áreas orientadas de los trapezoides delimitados por cada dos vértices y el eje horizontal, es decir,
+    $$A=\abs{\sum_{k=0}^n(x_{k+1}-x_k)\frac{y_k+y_{k+1}}{2}}$$
+    Desarrollando la expresión anterior y teniendo en cuenta la suma telescópica
+    $$\sum_{k=0}^n(x_{k+1}y_{k+1}-x_ky_k)=x_0y_0-x_ny_n=0$$
+    obtenemos el resultado deseado.
+\end{proof}
+Esta es la fórmula de Gauss, también conocida como la \textit{fórmula del zapato} o \textit{shoelace formula}, debido al patrón que sigue al multiplicar y sumar las coordenadas.
+\end{document}
