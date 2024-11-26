@@ -1,58 +1,77 @@
-% Codificación y fuentes
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[spanish]{babel}
+% Configuración de codificación y fuentes
+\usepackage[utf8]{inputenc}      % Permite usar caracteres UTF-8 en el archivo fuente.
+\usepackage[T1]{fontenc}         % Usa codificación de fuente T1 para caracteres extendidos.
+\usepackage{lmodern}             % Fuente moderna de LaTeX que mejora la visualización en PDF.
+\usepackage[spanish]{babel}      % Configuración para español (división silábica y traducción de elementos como "Capítulo").
 
 % Paquetes matemáticos
-\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, calrsfs} % Paquetes para símbolos matemáticos, teoremas, y fuentes adicionales.
 
-% Configuración de enlaces
-\usepackage[hidelinks]{hyperref}
+% Configuración de márgenes
+\usepackage[a4paper, margin=2.5cm]{geometry} % Define los márgenes del documento (2.5 cm en este caso).
 
-% Márgenes de página
-\usepackage[a4paper, margin=2.5cm]{geometry}
+% Encabezados y pies de página
+\usepackage{fancyhdr}            % Permite personalizar encabezados y pies de página.
 
-% Configuraciones de teoremas y entornos personalizados
-\newtheorem{theorem}{Teorema}[section]
-\newtheorem{prop}{Proposición}[section]
-\newtheorem{lem}{Lema}[section]
-\newtheorem{cor}{Corolario}[section]
-\theoremstyle{definition}
-\newtheorem{df}{Definición}[section]
-\newtheorem{example}{Ejemplo}[section]
-\newtheorem{obs}{Observación}[section]
+% Enlaces y referencias
+\usepackage[hidelinks]{hyperref} % Habilita enlaces en el PDF ocultando los colores.
 
-% Comandos personalizados
-\renewcommand*{\deg}{\normalfont\text{gr}\hspace*{1mm}}
-\renewcommand{\Im}{\operatorname{\rm Im}}
-\renewcommand{\Re}{\operatorname{\rm Re}}
-\renewcommand{\vec}[1]{\mathbf{#1}}
-\newcommand{\Log}{\operatorname{\rm Log}}
-\newcommand{\inter}{\operatorname{\rm int}}
-\newcommand{\cl}[1]{\overline{#1}}
-\newcommand{\conj}[1]{\overline{#1}}
-\newcommand{\fr}[1]{\partial{#1}}
-\newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
-\newcommand{\norm}[1]{\left\| #1\right\|}
-\newcommand{\mcm}[1]{\operatorname{\rm mcm}\left(#1\right)}
-\newcommand{\mcd}[1]{\operatorname{\rm mcd}\left(#1\right)}
-\newcommand{\ec}[1]{\left[#1\right]}
-\newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
-\newcommand{\suc}[1]{\left\lbrace#1\right\rbrace}
-\newcommand{\abs}[1]{\left| #1\right|}
-\newcommand{\ent}[1]{\left\lfloor #1\right\rfloor}
-\newcommand{\eps}{\varepsilon}
+% Configuración de espaciado
+\usepackage{setspace}            % Permite ajustar el espaciado entre líneas.
+\onehalfspacing                  % Establece espaciado de 1.5 líneas en todo el documento.
 
-% Definición de conjuntos
-\def\NN{\mathbb{N}}
-\def\ZZ{\mathbb{Z}}
-\def\QQ{\mathbb{Q}}
-\def\RR{\mathbb{R}}
-\def\CC{\mathbb{C}}
+% Configuración de encabezados
+\setlength{\headheight}{15.5pt}                                 % Ajusta la altura del encabezado para evitar advertencias.
+\pagestyle{fancy}                                               % Activa el estilo de página personalizado con "fancyhdr".
+\fancyhead{}                                                    % Limpia los encabezados predeterminados.
+\renewcommand{\sectionmark}[1]{\markboth{\MakeUppercase{#1}}{}} % Redefinir el contenido de \leftmark para que solo incluya el título de la sección
+\fancyhead[C]{\leftmark}                                        % Muestra el nombre del capítulo centrado en el encabezado.
+\fancyfoot{}                                                    % Limpia los pies de página predeterminados.
+\fancyfoot[C]{\thepage}                                         % Muestra el número de página centrado en el pie de página.
 
-% Definición de vectores
+% Definición de entornos para teoremas y otros conceptos matemáticos
+\newtheorem{theorem}{Teorema}[section]       % Define el entorno "Teorema", numerado por capítulo.
+\newtheorem{prop}{Proposición}[section]      % Define "Proposición", numerado por capítulo.
+\newtheorem{lem}{Lema}[section]              % Define "Lema", numerado por capítulo.
+\newtheorem{cor}{Corolario}[section]         % Define "Corolario", numerado por capítulo.
+\theoremstyle{definition}                    % Cambia el estilo para definiciones y ejemplos.
+\newtheorem{definition}{Definición}[section] % Define "Definición", numerado por capítulo.
+\newtheorem{note}{Nota}[section]             % Define "Definición", numerado por capítulo.
+\newtheorem{example}{Ejemplo}[section]       % Define "Ejemplo", numerado por capítulo.
+\newtheorem{obs}{Observación}[section]       % Define "Observación", numerado por capítulo.
+
+% Comandos para personalizar notación matemática
+\renewcommand*{\deg}{\normalfont\text{gr}\hspace*{1mm}} % Redefine el símbolo de grados como "gr".
+\renewcommand{\vec}[1]{\mathbf{#1}}                     % Define vectores como negritas.
+\newcommand{\cl}[1]{\overline{#1}}                      % Define la clausura.
+\newcommand{\conj}[1]{\overline{#1}}                    % Define conjugación.
+\newcommand{\fr}[1]{\partial{#1}}                       % Define frontera.
+\newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}    % Define producto interno.
+\newcommand{\norm}[1]{\left\| #1\right\|}               % Define norma.
+\newcommand{\ec}[1]{\left[#1\right]}                    % Define corchetes.
+\newcommand{\set}[1]{\left\lbrace#1\right\rbrace}       % Define conjuntos.
+\newcommand{\suc}[1]{\left\lbrace#1\right\rbrace}       % Define sucesiones.
+\newcommand{\abs}[1]{\left| #1\right|}                  % Define valor absoluto.
+\newcommand{\ent}[1]{\left\lfloor #1\right\rfloor}      % Define parte entera.
+\newcommand{\eps}{\varepsilon}                          % Redefine epsilon.
+\renewcommand{\Im}{\operatorname{Im}}                   % Redefinición del operador "Parte imaginaria"
+\renewcommand{\Re}{\operatorname{Re}}                   % Redefinición del operador "Parte real"
+\DeclareMathOperator{\Log}{Log}                         % Operador "Logaritmo"
+\DeclareMathOperator{\inter}{int}                       % Operador "Interior"
+\DeclareMathOperator{\mcm}{mcm}                         % Operador "mínimo común múltiplo"
+\DeclareMathOperator{\mcd}{mcd}                         % Operador "máximo común divisor"
+\DeclareMathOperator{\Cov}{Cov}                         % Operador matemático "Covarianza"
+
+% Notación para conjuntos numéricos
+\def\NN{\mathbb{N}} % Números naturales
+\def\ZZ{\mathbb{Z}} % Números enteros
+\def\QQ{\mathbb{Q}} % Números racionales
+\def\RR{\mathbb{R}} % Números reales
+\def\CC{\mathbb{C}} % Números complejos
+
+% Notación para vectores
 \def\0{\vec{0}}
+\def\1{\vec{1}}
 \def\a{\vec{a}}
 \def\b{\vec{b}}
 \def\u{\vec{u}}
@@ -63,5 +82,4 @@
 \def\z{\vec{z}}
 \def\f{\vec{f}}
 \def\g{\vec{g}}
-\def\p{\vec{p}}
-\def\t{\vec{t}}
+

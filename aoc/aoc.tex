@@ -15,20 +15,20 @@
 \tableofcontents
 
 \section{Geometría computacional}
-\begin{df}
+\begin{definition}
     Se llama \textbf{polígono simple} a un polígono cuyos lados no contiguos no se intersecan; es decir, es una figura plana cerrada que forma la frontera de una región poligonal.
-\end{df}
+\end{definition}
 
 Un polígono simple divide al plano en dos conjuntos de puntos: el \textbf{interior} y el \textbf{exterior} de la región poligonal. El interior se caracteriza por no contener rectas completas, mientras que el exterior sí puede contenerlas. Un polígono que no es simple se denomina \textbf{polígono complejo}.
 
-\begin{df}
+\begin{definition}
     Una \textbf{triangulación} de un polígono simple es una división de su área en un conjunto de triángulos que cumplen las siguientes condiciones:
     \begin{itemize}
         \item La unión de todos los triángulos es igual al polígono original.
         \item Los vértices de los triángulos son vértices del polígono original.
         \item Cualquier pareja de triángulos es disjunta o comparte únicamente un vértice o un lado.
     \end{itemize}
-\end{df}
+\end{definition}
 
 \begin{lem}
     Todo polígono simple de $n$ vértices es triangulable.
@@ -53,10 +53,10 @@ Un polígono simple divide al plano en dos conjuntos de puntos: el \textbf{inter
     En ambos casos, hemos encontrado una diagonal que divide $P$ en dos polígonos simples con menos de $n$ vértices. Por hipótesis inductiva, ambos polígonos son triangulables. Al combinar las triangulaciones de los subpolígonos y la diagonal encontrada, obtenemos una triangulación de $P$.
 \end{proof}
 
-\begin{thm}[Teorema de Pick]
+\begin{theorem}[Teorema de Pick]
     Supongamos que tenemos una cuadrícula en el plano, donde cada punto tiene coordenadas enteras. Sea $P$ un polígono simple cuyos vértices están todos en puntos de la cuadrícula. Sea $i$ el número de puntos de la cuadrícula en el interior de $P$, y $f$ el número de puntos de la cuadrícula en la frontera de $P$. Entonces, el área del polígono $P$ se calcula mediante:
     $$A_P = i + \frac{f}{2} - 1$$
-\end{thm}
+\end{theorem}
 
 \begin{proof}
     Vamos a demostrar el resultado por inducción. Sea $P$ un polígono simple y $T$ un triángulo con un lado común con $P$. Asumimos que el teorema es cierto para $P$ y para $T$ de forma separada y demostraremos que también es cierto para el polígono $PT$ formado a partir de $P$ añadiendo $T$. Como $P$ y $T$ comparten un lado, todos los puntos frontera a lo largo del lado común, excepto los puntos extremos del lado, se convierten en puntos interiores de $PT$. Por tanto, llamando $c$ al número de puntos frontera en común, tenemos que
@@ -92,14 +92,14 @@ Un polígono simple divide al plano en dos conjuntos de puntos: el \textbf{inter
     Finalmente cualquier triángulo puede particionarse en triángulos rectángulos.
 \end{proof}
 
-\begin{thm}[Fórmula de Gauss para el área de polígonos simples]
+\begin{theorem}[Fórmula de Gauss para el área de polígonos simples]
     Sea $P$ un polígono simple con vértices dados en orden cíclico $p_0, p_1, \dots, p_{n-1}$, donde $p_i = (x_i, y_i)$ para $i = 0, 1, \dots, n-1$. Entonces, el área $A$ de $P$ se puede calcular mediante:
     $$A=\frac{1}{2}\abs{\sum_{k=0}^nx_ky_{k+1} - x_{k+1}y_k}=\frac{1}{2}\sum_{k=0}^n\det\begin{pmatrix}
         x_k & x_{k+1} \\
         y_k & y_{k+1}
     \end{pmatrix}$$
     donde se considera que $p_n = p_0$.
-\end{thm}
+\end{theorem}
 
 \begin{proof}
     El área del polígono es la suma de todas las áreas orientadas de los trapezoides delimitados por cada dos vértices y el eje horizontal, es decir,
